@@ -1,6 +1,8 @@
 import React from 'react';
 import Date from './DateContainer';
 import styled from 'styled-components';
+import Todos from './Todos';
+import BottomContainer from './BottomContainer';
 
 const ContentsBox = styled.div`
     width: 27rem;
@@ -17,8 +19,8 @@ const TodoContainer = () => {
     return (
         <ContentsBox>
             <Date />
-            <div>TodoList</div>
-            <div>bottomContainer</div>
+            <Todos />
+            <BottomContainer />
         </ContentsBox>
     );
 };
