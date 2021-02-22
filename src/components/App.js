@@ -8,6 +8,7 @@ const Container = styled.div`
     align-items: center;
     min-height: 100vh;
     width: 100%;
+    background: linear-gradient(to right, rgb(234, 176, 194), rgb(172, 125, 199));
 `;
 
 const App = () => {
