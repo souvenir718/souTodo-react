@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const TodoBottom = styled.div`
@@ -44,6 +44,14 @@ const AddTodo = styled.div`
 `;
 
 const BottomContainer = () => {
+    const [visible, setVisible] = useState(false);
+
+    const openModal = () => {
+        setVisible(true);
+    };
+    const closeModal = () => {
+        setVisible(false);
+    };
     return (
         <TodoBottom>
             <Container>
@@ -51,7 +59,7 @@ const BottomContainer = () => {
                     Task : <TodoTotal></TodoTotal>
                 </p>
                 <Input type="text" placeholder="Write a Todo" />
-                <AddTodo>Add Task 💬</AddTodo>
+                <AddTodo onClick={openModal}>Add Task 💬</AddTodo>
             </Container>
         </TodoBottom>
     );

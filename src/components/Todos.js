@@ -39,7 +39,7 @@ const TodoList = styled.ul`
     }
 `;
 
-const Todos = () => {
+const Todos = ({}) => {
     const [todolist, setTodolist] = useState(todos);
 
     const setTodo = (id) => {
