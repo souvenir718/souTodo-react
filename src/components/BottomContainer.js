@@ -34,7 +34,9 @@ const Input = styled.input`
     outline: none;
     &::placeholder {
         color: rgb(125, 140, 255);
+        font-weight: bold;
     }
+    display: ${(props) => (props.visible ? '' : 'none')};
 `;
 
 const AddTodo = styled.div`
@@ -43,23 +45,28 @@ const AddTodo = styled.div`
     cursor: pointer;
 `;
 
+const TaskText = styled.p`
+    font-weight: bold;
+    width: 10rem;
+    display: ${(props) => (props.visible ? 'none' : '')};
+`;
+
 const BottomContainer = () => {
     const [visible, setVisible] = useState(false);
 
-    const openModal = () => {
-        setVisible(true);
+    const show = () => {
+        setVisible((visible) => !visible);
+        console.log(visible);
     };
-    const closeModal = () => {
-        setVisible(false);
-    };
+
     return (
         <TodoBottom>
             <Container>
-                <p style={{ fontWeight: 'bold' }}>
+                <Input visible={visible} type="text" placeholder="Write a Todo" />
+                <TaskText visible={visible}>
                     Task : <TodoTotal></TodoTotal>
-                </p>
-                <Input type="text" placeholder="Write a Todo" />
-                <AddTodo onClick={openModal}>Add Task 💬</AddTodo>
+                </TaskText>
+                <AddTodo onClick={show}>Add Task 💬</AddTodo>
             </Container>
         </TodoBottom>
     );
