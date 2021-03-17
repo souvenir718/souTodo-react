@@ -9,7 +9,7 @@ const TodoBottom = styled.div`
     border-top: 0.1px solid rgba(125, 140, 255, 0.25);
 `;
 
-const Container = styled.div`
+const Container = styled.form`
     height: 100%;
     width: 100%;
     display: flex;
@@ -53,20 +53,28 @@ const TaskText = styled.p`
 
 const BottomContainer = () => {
     const [visible, setVisible] = useState(false);
+    const [text, setText] = useState('');
 
+    const onChange = (e) => {
+        setText(e.target.value);
+    };
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        setText('');
+    };
     const show = () => {
         setVisible((visible) => !visible);
-        console.log(visible);
     };
 
     return (
         <TodoBottom>
-            <Container>
-                <Input visible={visible} type="text" placeholder="Write a Todo" />
+            <Container onSubmit={onSubmit}>
+                <Input visible={visible} type="text" value={text} placeholder="Write a Todo" onChange={onChange} />
                 <TaskText visible={visible}>
-                    Task : <TodoTotal></TodoTotal>
+                    📃 Task : <TodoTotal>0</TodoTotal>
                 </TaskText>
-                <AddTodo onClick={show}>Add Task 💬</AddTodo>
+                <AddTodo onClick={show}>Add Task 📝</AddTodo>
             </Container>
         </TodoBottom>
     );

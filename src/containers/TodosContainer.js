@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Todos from '../components/Todos';
-import { addTodo, toggleTodo } from '../redux/modules/todos';
+import { addTodo, toggleTodo } from '../redux/modules/store';
 
 const TodosContainer = () => {
     const todos = useSelector((state) => state.todos);

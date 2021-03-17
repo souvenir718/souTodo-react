@@ -1,33 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Todo from './Todo';
-
-const todos = [
-    {
-        id: 1,
-        title: 'todo1',
-        isDone: false,
-        date: '2021.01.09',
-    },
-    {
-        id: 2,
-        title: 'todo2',
-        isDone: false,
-        date: '2021.01.09',
-    },
-    {
-        id: 3,
-        title: 'todo3',
-        isDone: true,
-        date: '2021.01.09',
-    },
-    {
-        id: 4,
-        title: 'todo4',
-        isDone: false,
-        date: '2021.01.09',
-    },
-];
 
 const TodoList = styled.ul`
     margin-top: 2em;
@@ -39,7 +13,7 @@ const TodoList = styled.ul`
     }
 `;
 
-const Todos = ({}) => {
+const Todos = ({ onToggle, todos }) => {
     const [todolist, setTodolist] = useState(todos);
 
     const setTodo = (id) => {
@@ -59,4 +33,9 @@ const Todos = ({}) => {
     );
 };
 
+// function mapStateToProps(state, ownProps) {
+//     console.log(state.ownProps);
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Todos);
 export default Todos;
