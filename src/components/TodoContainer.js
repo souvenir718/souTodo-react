@@ -2,7 +2,7 @@ import React from 'react';
 import Date from './DateContainer';
 import styled from 'styled-components';
 import Todos from './Todos';
-import BottomContainer from './BottomContainer';
+import BottomContainer from '../containers/BottomContainer';
 import TodosContainer from '../containers/TodosContainer';
 
 const ContentsBox = styled.div`

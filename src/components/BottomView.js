@@ -51,7 +51,7 @@ const TaskText = styled.p`
     display: ${(props) => (props.visible ? 'none' : '')};
 `;
 
-const BottomContainer = () => {
+const BottomView = ({ todos, onCreate }) => {
     const [visible, setVisible] = useState(false);
     const [text, setText] = useState('');
 
@@ -61,6 +61,7 @@ const BottomContainer = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        onCreate(text);
         setText('');
     };
     const show = () => {
@@ -80,4 +81,4 @@ const BottomContainer = () => {
     );
 };
 
-export default BottomContainer;
+export default BottomView;

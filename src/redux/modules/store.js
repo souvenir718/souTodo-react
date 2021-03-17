@@ -52,7 +52,8 @@ export const toggleTodo = (id) => ({
 const todos = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
-            return state.concat(action.todo);
+            console.log(state, action.todo);
+            return [...state, action.todo];
         case TOGGLE_TODO:
             return state.map((todo) => (todo.id === action.id ? { ...todo, isDone: !todo.isDone } : todo));
         default:
