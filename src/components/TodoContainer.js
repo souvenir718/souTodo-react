@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Todos from './Todos';
 import BottomContainer from '../containers/BottomContainer';
 import TodosContainer from '../containers/TodosContainer';
+import BottomView from './BottomView';
 
 const ContentsBox = styled.div`
     width: 27rem;
@@ -20,8 +21,8 @@ const TodoContainer = () => {
     return (
         <ContentsBox>
             <Date />
-            <TodosContainer />
-            <BottomContainer />
+            <Todos />
+            <BottomView />
         </ContentsBox>
     );
 };

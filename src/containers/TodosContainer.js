@@ -1,17 +1,17 @@
-import React, { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Todos from '../components/Todos';
-import { addTodo, toggleTodo } from '../redux/modules/store';
+// import React, { useCallback } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import Todos from '../components/Todos';
+// import { addTodo, toggleTodo } from '../redux/store';
 
-const TodosContainer = () => {
-    const todos = useSelector((state) => state.todos);
-    console.log(todos);
-    const dispatch = useDispatch();
+// const TodosContainer = () => {
+//     const todos = useSelector((state) => state.todos);
 
-    const onCreate = (text) => dispatch(addTodo(text));
-    const onToggle = useCallback((id) => dispatch(toggleTodo(id)), [dispatch]);
+//     const dispatch = useDispatch();
 
-    return <Todos todos={todos} onCreate={onCreate} onToggle={onToggle} />;
-};
+//     const onCreate = (text) => dispatch(addTodo(text));
+//     const onToggle = useCallback((id) => dispatch(toggleTodo(id)), [dispatch]);
 
-export default TodosContainer;
+//     return <Todos todos={todos} onCreate={onCreate} onToggle={onToggle} />;
+// };
+
+// export default TodosContainer;

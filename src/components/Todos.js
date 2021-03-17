@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Todo from './Todo';
+import { toggle } from '../redux/store';
 
 const TodoList = styled.ul`
     margin-top: 2em;
@@ -13,11 +14,11 @@ const TodoList = styled.ul`
     }
 `;
 
-const Todos = ({ onToggle, todos }) => {
+const Todos = ({ toggleTodo, todos }) => {
     const [todolist, setTodolist] = useState(todos);
 
     const setTodo = (id) => {
-        setTodolist(todolist?.map((todo) => (todo.id === id ? { ...todo, isDone: !todo.isDone } : todo)));
+        toggleTodo(id);
     };
 
     const removeTodo = (id) => {
@@ -26,16 +27,21 @@ const Todos = ({ onToggle, todos }) => {
 
     return (
         <TodoList>
-            {todolist.map((t) => (
+            {todos.map((t) => (
                 <Todo key={t.id} id={t.id} title={t.title} isDone={t.isDone} date={t.date} setTodo={setTodo} removeTodo={removeTodo} />
             ))}
         </TodoList>
     );
 };
 
-// function mapStateToProps(state, ownProps) {
-//     console.log(state.ownProps);
-// }
+function mapStateToProps(state, ownProps) {
+    return { todos: state };
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Todos);
-export default Todos;
+function mapDispatchToProps(dispatch, ownProps) {
+    return {
+        toggleTodo: (id) => dispatch(toggle(id)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);
