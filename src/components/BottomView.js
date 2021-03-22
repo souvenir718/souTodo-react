@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { add } from '../redux/store';
 
 const TodoBottom = styled.div`
     height: 8vh;
@@ -51,7 +53,7 @@ const TaskText = styled.p`
     display: ${(props) => (props.visible ? 'none' : '')};
 `;
 
-const BottomView = ({ todos, onCreate }) => {
+const BottomView = ({ addTodo }) => {
     const [visible, setVisible] = useState(false);
     const [text, setText] = useState('');
 
@@ -61,7 +63,8 @@ const BottomView = ({ todos, onCreate }) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        onCreate(text);
+        // console.log(text);
+        addTodo(text);
         setText('');
     };
     const show = () => {
@@ -81,4 +84,10 @@ const BottomView = ({ todos, onCreate }) => {
     );
 };
 
-export default BottomView;
+function mapDispatchProps(dispatch, ownProps) {
+    return {
+        addTodo: (title) => dispatch(add(title)),
+    };
+}
+
+export default connect(null, mapDispatchProps)(BottomView);

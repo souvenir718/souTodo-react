@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Todo from './Todo';
-import { toggle } from '../redux/store';
+import { deleteTodo, toggle } from '../redux/store';
 
 const TodoList = styled.ul`
     margin-top: 2em;
@@ -14,7 +14,7 @@ const TodoList = styled.ul`
     }
 `;
 
-const Todos = ({ toggleTodo, todos }) => {
+const Todos = ({ toggleTodo, todos, deleteTodo }) => {
     const [todolist, setTodolist] = useState(todos);
 
     const setTodo = (id) => {
@@ -22,7 +22,7 @@ const Todos = ({ toggleTodo, todos }) => {
     };
 
     const removeTodo = (id) => {
-        setTodolist(todolist?.filter((todo) => todo.id !== id));
+        deleteTodo(id);
     };
 
     return (
@@ -41,6 +41,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
     return {
         toggleTodo: (id) => dispatch(toggle(id)),
+        deleteTodo: (id) => dispatch(deleteTodo(id)),
     };
 }
 
