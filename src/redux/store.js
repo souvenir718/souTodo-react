@@ -1,11 +1,15 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import moment from 'moment';
 
+const TODOS_LS = 'TODO_LIST';
+
+const initialState = localStorage.getItem(TODOS_LS) ? JSON.parse(localStorage.getItem(TODOS_LS)) : [];
+
 const toDos = createSlice({
     name: 'toDosReducer',
-    initialState: [],
+    initialState: initialState,
     reducers: {
-        add: (state, action) => {
+        add(state, action) {
             state.push({
                 title: action.payload,
                 id: Math.random().toString(36).slice(2),
@@ -19,6 +23,6 @@ const toDos = createSlice({
 });
 
 const store = configureStore({ reducer: toDos.reducer });
-
+store.subscribe(() => localStorage.setItem(TODOS_LS, JSON.stringify(store.getState())));
 export const { add, toggle, deleteTodo } = toDos.actions;
 export default store;
