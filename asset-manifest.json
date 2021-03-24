@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/souTodo-react/static/js/main.4fb57401.chunk.js",
+    "main.js.map": "/souTodo-react/static/js/main.4fb57401.chunk.js.map",
+    "runtime-main.js": "/souTodo-react/static/js/runtime-main.5145f768.js",
+    "runtime-main.js.map": "/souTodo-react/static/js/runtime-main.5145f768.js.map",
+    "static/js/2.9bde9333.chunk.js": "/souTodo-react/static/js/2.9bde9333.chunk.js",
+    "static/js/2.9bde9333.chunk.js.map": "/souTodo-react/static/js/2.9bde9333.chunk.js.map",
+    "index.html": "/souTodo-react/index.html",
+    "static/js/2.9bde9333.chunk.js.LICENSE.txt": "/souTodo-react/static/js/2.9bde9333.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5145f768.js",
+    "static/js/2.9bde9333.chunk.js",
+    "static/js/main.4fb57401.chunk.js"
+  ]
+}
