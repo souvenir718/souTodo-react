@@ -53,7 +53,7 @@ const TaskText = styled.p`
     display: ${(props) => (props.visible ? 'none' : '')};
 `;
 
-const BottomView = ({ addTodo }) => {
+const BottomView = ({ todos, addTodo }) => {
     const [visible, setVisible] = useState(false);
     const [text, setText] = useState('');
 
@@ -76,7 +76,7 @@ const BottomView = ({ addTodo }) => {
             <Container onSubmit={onSubmit}>
                 <Input visible={visible} type="text" value={text} placeholder="Write a Todo" onChange={onChange} />
                 <TaskText visible={visible}>
-                    📃 Task : <TodoTotal>0</TodoTotal>
+                    📃 Task : <TodoTotal>{todos.length}</TodoTotal>
                 </TaskText>
                 <AddTodo onClick={show}>Add Task 📝</AddTodo>
             </Container>
@@ -84,10 +84,14 @@ const BottomView = ({ addTodo }) => {
     );
 };
 
+function mapStateToProps(state, ownProps) {
+    return { todos: state };
+}
+
 function mapDispatchProps(dispatch, ownProps) {
     return {
         addTodo: (title) => dispatch(add(title)),
     };
 }
 
-export default connect(null, mapDispatchProps)(BottomView);
+export default connect(mapStateToProps, mapDispatchProps)(BottomView);
